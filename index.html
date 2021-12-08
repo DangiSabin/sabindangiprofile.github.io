@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Sabin Portfolio</title>
+        <title>Sabin Dangi Portfolio</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
 	    
@@ -171,10 +171,13 @@
                     <h2 class="mb-5">Contact Me</h2>	
                     <div class="contact-section">
 						<h3>Get in touch with Me</h3>
-						    <input id="contactname" type="text" placeholder="Your Name">
-						    <input id="contactemail" type="text" placeholder="Your Email Address">
-						    <textarea id="contactmessage" name="Message"  placeholder="Write your message here..." rows="10" ></textarea><br/>
-						    <button id="btnSend" onclick=sendMessge()>Send Message</button>
+                        <form method="post">
+						    <input id="contactname" type="text" name="name" placeholder="Your Name">
+						    <input id="contactemail" type="email" name="email" placeholder="Your Email Address">
+						    <textarea id="contactmessage" name="Message"  placeholder="Write your message here..." rows="10"></textarea><br/>
+                            <button id="btnSend" onclick="sendMessge()">Send Message</button>
+                        </form>    
+                        
 					</div>
 					
                 </div>
@@ -190,31 +193,31 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
 		 <!--this is essential to link this smtp and jquery cdn link-->
-         <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
  
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <!--this is essential to link this smtp and jquery cdn link-->
 
-        <script>
-		
+        <script type="text/javascript">
 		function sendMessge()
 		{   
             var name=$('#contactname').val();
             var emailFrom=$('#contactemail').val();
             var message=$('#contactmessage').val();
-            //console.log(name+" "+emailFrom+" "+message);
+
+            console.log(name+" "+emailFrom+" "+message);
+
 			Email.send({
-                SecureToken: "35a19527-35ff-4401-94bf-d42466ea95ec",
-                To: "sabin4.dangi@gmail.com",
-                From: emailFrom,
-                Subject: "Message from Portfolio website",
-                Body: message
-            }).then(
-                message =>{
-                    alert("mail sent successfully")
-                }    
-            );
+                Host: "smtp.gmail.com",
+	            Username : "sabin4.dangi@gmail.com",
+	            Password : "Nepali@2021",
+	            To : "sabin4.dangi@gmail.com",
+	            From :emailFrom,
+	            Subject : "Email from Portfolio website",
+	            Body :"Well that was easy!!"
+            }).then(function (message) {
+                alert("mail sent successfully")
+            });
 		}
 		</script>
     </body>
